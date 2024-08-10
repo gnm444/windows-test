@@ -1,9 +1,8 @@
-﻿REM Navigate to the source directory
+REM Navigate to the source directory
 set "scriptDir=%cd%"
 set "phpSdkDir=%scriptDir%\php-sdk-binary-tools-master"
 set "phpSourceDir=%phpSdkDir%\phpdev\vc16\x64\php-8.2.21-src"
 cd /d "%phpSourceDir%"
-
 
 
 REM Use the arguments passed from phpsdk-starter.bat
