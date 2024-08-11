@@ -22,8 +22,12 @@ cd /d "%scriptDir%"
 
 xcopy /e /i /y php-8.2.21-src "%phpSdkDir%\phpdev\vc16\x64\php-8.2.21-src"
 cd /d "%phpSdkDir%"
+@echo off
 call phpsdk-vs16-x64.bat
-
+cd /d "C:\windows_test4\php-sdk-binary-tools-master\phpdev\vc16\x64\php-8.2.21-src"
+buildconf --force
+configure --disable-all --enable-cli
+nmake
 
 REM Output
 echo Build complete: %phpSourceDir%\x64\Release_TS\php_agent.dll
