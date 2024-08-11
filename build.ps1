@@ -34,7 +34,7 @@ Get-ChildItem -Directory
 Start-Process -FilePath "C:\\windows_test6\php-sdk-binary-tools-master\\phpsdk-vs16-x64.bat" -Wait -NoNewWindow
 
 # Change directory to the specified path
-Set-Location "C:\windows_test7\php-sdk-binary-tools-master\phpdev\vc16\x64\php-8.2.21-src"
+Set-Location "C:\\windows_test7\\php-sdk-binary-tools-master\\phpdev\\vc16\\x64\\php-8.2.21-src"
 
 # Run the subsequent commands
 & .\buildconf --force
