@@ -31,7 +31,8 @@ Get-ChildItem -Directory
 
 
 # Execute the batch file and wait for it to complete
-Start-Process -FilePath "C:\\windows-test12\\php-sdk-binary-tools-master\\phpsdk-vs16-x64.bat" -Wait -NoNewWindow
+#Start-Process -FilePath "C:\\windows-test12\\php-sdk-binary-tools-master\\phpsdk-vs16-x64.bat" -Wait -NoNewWindow
+Start-Process -FilePath "C:\\windows-test12\\php-sdk-binary-tools-master\\phpsdk-starter.bat" -c vc16 -a x64 -t "C:\\windows-test12\\php-sdk-binary-tools-master\\build-task.bat" --task-args "clean build" -Wait -NoNewWindow
 Write-Output "Starting in current location:"
 
 
