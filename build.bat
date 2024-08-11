@@ -21,9 +21,8 @@ cd /d "%scriptDir%"
 
 
 xcopy /e /i /y php-8.2.21-src "%phpSdkDir%\phpdev\vc16\x64\php-8.2.21-src"
-
-call "%phpSdkDir%\phpsdk-starter.bat" -c vc16 -a x64 -t "build-task.bat" --task-args "clean build"
-
+cd /d "%phpSdkDir%"
+call phpsdk-vs16-x64.bat
 
 
 REM Output
