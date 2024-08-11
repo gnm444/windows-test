@@ -6,8 +6,8 @@ Set-Location -Path $PSScriptRoot
 
 # Set variables
 $scriptDir = Get-Location
-$phpSdkDir = "C:\\windows_test7\\php-sdk-binary-tools-master"
-$phpSourceDir = "C:\\windows_test7\\php-sdk-binary-tools-master\\phpdev\\vc16\\x64\\php-8.2.21-src"
+$phpSdkDir = "C:\\windows-test11\\php-sdk-binary-tools-master"
+$phpSourceDir = "C:\\windows-test11\\php-sdk-binary-tools-master\\phpdev\\vc16\\x64\\php-8.2.21-src"
 
 
 # Copy PHP agent to the extensions folder
@@ -31,10 +31,22 @@ Get-ChildItem -Directory
 
 
 # Execute the batch file and wait for it to complete
-Start-Process -FilePath "C:\\windows_test6\php-sdk-binary-tools-master\\phpsdk-vs16-x64.bat" -Wait -NoNewWindow
+Start-Process -FilePath "C:\\windows-test11\\php-sdk-binary-tools-master\\phpsdk-vs16-x64.bat" -Wait -NoNewWindow
+Write-Output "Starting in current location:"
+
+
+Write-Output "Waiting in current location:"
+# Wait for phpsdk-starter.bat to initialize (adjust timeout as needed)
+Start-Sleep -Seconds 120
+Write-Output "Waiting over in current location:"
+# Execute build-task.bat in the same window as phpsdk-starter.bat
+$buildTaskProcess = Start-Process "C:\\windows-test11\\build-task.bat" -WindowStyle Hidden -PassThru
+
+# Wait for build-task.bat to finish
+Wait-Process $buildTaskProcess
 
 # Change directory to the specified path
-Set-Location "C:\\windows_test7\\php-sdk-binary-tools-master\\phpdev\\vc16\\x64\\php-8.2.21-src"
+Set-Location "C:\\windows_test11\\php-sdk-binary-tools-master\\phpdev\\vc16\\x64\\php-8.2.21-src"
 
 # Run the subsequent commands
 & .\buildconf --force
