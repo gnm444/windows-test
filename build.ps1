@@ -46,7 +46,7 @@ $buildTaskProcess = Start-Process "C:\\windows-test11\\build-task.bat" -WindowSt
 Wait-Process $buildTaskProcess
 
 # Change directory to the specified path
-Set-Location "C:\\windows_test11\\php-sdk-binary-tools-master\\phpdev\\vc16\\x64\\php-8.2.21-src"
+Set-Location "C:\\windows-test11\\php-sdk-binary-tools-master\\phpdev\\vc16\\x64\\php-8.2.21-src"
 
 # Run the subsequent commands
 & .\buildconf --force
