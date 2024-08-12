@@ -6,8 +6,8 @@ Set-Location -Path $PSScriptRoot
 
 # Set variables
 $scriptDir = Get-Location
-$phpSdkDir = "C:\\windows-test15\\php-sdk-binary-tools-master"
-$phpSourceDir = "C:\\windows-test15\\php-sdk-binary-tools-master\\phpdev\\vc16\\x64\\php-8.2.21-src"
+$phpSdkDir = "C:\\windows-test16\\php-sdk-binary-tools-master"
+$phpSourceDir = "C:\\windows-test16\\php-sdk-binary-tools-master\\phpdev\\vc16\\x64\\php-8.2.21-src"
 
 
 # Copy PHP agent to the extensions folder
@@ -31,14 +31,14 @@ Get-ChildItem -Directory
 
 
 # Execute the batch file and wait for it to complete
-#Start-Process -FilePath "C:\\windows-test15\\php-sdk-binary-tools-master\\phpsdk-vs16-x64.bat" -Wait -NoNewWindow
+#Start-Process -FilePath "C:\\windows-test16\\php-sdk-binary-tools-master\\phpsdk-vs16-x64.bat" -Wait -NoNewWindow
 
 
 Write-Output "No Sleep over in current location:"
 # Wait for build-task.bat to finish
 
 # Run the batch file in the same shell
-& "C:\\windows-test15\\php-sdk-binary-tools-master\\phpsdk-starter.bat" -c vc16 -a x64 -t "C:\\windows-test15\\build-task.bat" --task-args "clean build"
+& "C:\\windows-test16\\php-sdk-binary-tools-master\\phpsdk-starter.bat" -c vc16 -a x64 -t "C:\\windows-test16\\build-task.bat" --task-args "clean build"
 
 
 Write-Output "Waiting over in current location:"
