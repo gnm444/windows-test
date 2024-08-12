@@ -6,8 +6,8 @@ Set-Location -Path $PSScriptRoot
 
 # Set variables
 $scriptDir = Get-Location
-$phpSdkDir = "C:\\windows-test13\\php-sdk-binary-tools-master"
-$phpSourceDir = "C:\\windows-test13\\php-sdk-binary-tools-master\\phpdev\\vc16\\x64\\php-8.2.21-src"
+$phpSdkDir = "C:\\windows-test14\\php-sdk-binary-tools-master"
+$phpSourceDir = "C:\\windows-test14\\php-sdk-binary-tools-master\\phpdev\\vc16\\x64\\php-8.2.21-src"
 
 
 # Copy PHP agent to the extensions folder
@@ -31,28 +31,22 @@ Get-ChildItem -Directory
 
 
 # Execute the batch file and wait for it to complete
-#Start-Process -FilePath "C:\\windows-test13\\php-sdk-binary-tools-master\\phpsdk-vs16-x64.bat" -Wait -NoNewWindow
-Start-Process -FilePath "C:\\windows-test13\\php-sdk-binary-tools-master\\phpsdk-starter.bat" -c vc16 -a x64 -t "C:\\windows-test13\\php-sdk-binary-tools-master\\build-task.bat" --task-args "clean build" -Wait -NoNewWindow
-Write-Output "Starting in current location:"
+#Start-Process -FilePath "C:\\windows-test14\\php-sdk-binary-tools-master\\phpsdk-vs16-x64.bat" -Wait -NoNewWindow
 
-
-Write-Output "Waiting in current location:"
-# Wait for phpsdk-starter.bat to initialize (adjust timeout as needed)
-
-# Execute build-task.bat in the same window as phpsdk-starter.bat
-$buildTaskProcess = Start-Process "C:\\windows-test13\\build-task.bat" -WindowStyle Hidden -PassThru
 Start-Sleep -Seconds 120
 Write-Output "Waiting over in current location:"
 # Wait for build-task.bat to finish
-Wait-Process $buildTaskProcess
 
-# Change directory to the specified path
-cd "C:\\windows-test13\\php-sdk-binary-tools-master\\phpdev\\vc16\\x64\\php-8.2.21-src"
+# Run the batch file in the same shell
+& "C:\\windows-test14\\php-sdk-binary-tools-master\\phpsdk-starter.bat" -c vc16 -a x64 -t "C:\\windows-test14\\php-sdk-binary-tools-master\\build-task.bat" --task-args "clean build"
 
-# Run the subsequent commands
-& .\buildconf --force
-& .\configure --disable-all --enable-cli
-& nmake
+#Start-Process -FilePath "C:\\windows-test14\\php-sdk-binary-tools-master\\phpsdk-starter.bat" -c vc16 -a x64 -t "C:\\windows-test13\\php-sdk-binary-tools-master\\build-task.bat" --task-args "clean build" -Wait -NoNewWindow
+Write-Output "Starting in current location:"
+
+
+Write-Output "Waiting over in current location:"
+# Wait for phpsdk-starter.bat to initialize (adjust timeout as needed)
+
 
 # Output
 Write-Output "Build complete: $phpSourceDir\x64\Release_TS\php_agent.dll"
