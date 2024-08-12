@@ -33,14 +33,14 @@ Get-ChildItem -Directory
 # Execute the batch file and wait for it to complete
 #Start-Process -FilePath "C:\\windows-test15\\php-sdk-binary-tools-master\\phpsdk-vs16-x64.bat" -Wait -NoNewWindow
 
-Start-Sleep -Seconds 120
-Write-Output "Waiting over in current location:"
+
+Write-Output "No Sleep over in current location:"
 # Wait for build-task.bat to finish
 
 # Run the batch file in the same shell
 & "C:\\windows-test15\\php-sdk-binary-tools-master\\phpsdk-starter.bat" -c vc16 -a x64 -t "C:\\windows-test15\\build-task.bat" --task-args "clean build"
 
-Start-Sleep -Seconds 120
+
 Write-Output "Waiting over in current location:"
 #Start-Process -FilePath "C:\\windows-test15\\php-sdk-binary-tools-master\\phpsdk-starter.bat" -c vc16 -a x64 -t "C:\\windows-test13\\php-sdk-binary-tools-master\\build-task.bat" --task-args "clean build" -Wait -NoNewWindow
 Write-Output "Starting in current location:"
